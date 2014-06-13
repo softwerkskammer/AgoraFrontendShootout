@@ -1,0 +1,14 @@
+{
+"events": [	
+	{
+		"event": "Socrates UK 2014",
+		"organiser": "LSCC",
+		"start-date": "2014-06-12"
+	},
+	{
+		"event": "Socrates 2014",
+		"organiser": "Nicole",
+		"start-date": "2014-08-07"
+	}
+]
+}

@@ -1,41 +1,42 @@
 App = Ember.Application.create();
+App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 App.Router.map(function() {
-  
+
 });
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
-	  return [	
-	      	{
-	    		"name": "Socrates UK 2014 bis",
-	    		"organiser": "LSCC",
-	    		"start-date": "2014-06-12"
-	    	},
-	    	{
-	    		"name": "Socrates 2014 bis",
-	    		"organiser": "Nicole",
-	    		"start-date": "2014-08-07"
-	    	}
-	    ];
+	  return this.store.find('events', 1);
   }
 });
 
-App.Event = DS.Model.extend({
-	name: DS.attr("string")
+//App.EventsController = Ember.ObjectController.extend({
+//  name: "Hello",
+//
+//  actions: {
+//
+//  }
+//});
+
+App.Events = DS.Model.extend({
+	name: DS.attr("string"),
+  organiser: DS.attr("string"),
+  startdate: DS.attr("string")
 });
 
-App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
-App.Event.FIXTURES = [	
+App.Events.FIXTURES = [
   	{
+      "id": 1,
 		"name": "Socrates UK 2014",
 		"organiser": "LSCC",
-		"start-date": "2014-06-12"
+		"startdate": "2014-06-12"
 	},
 	{
+    "id": 2,
 		"name": "Socrates 2014",
 		"organiser": "Nicole",
-		"start-date": "2014-08-07"
+		"startdate": "2014-08-07"
 	}
 ];

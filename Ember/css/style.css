@@ -7,5 +7,10 @@
     border-color: #000000;
     border-width: 1px;
     border-style: solid;
+}
 
+.group {
+    border-color: #FF00FF;
+    border-width: 1px;
+    border-style: solid;
 }

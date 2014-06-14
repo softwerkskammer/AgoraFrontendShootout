@@ -23,6 +23,10 @@ App.MyActivitiesComponent = Ember.Component.extend({
   classNames: ['activities']
 });
 
+App.MyGroupComponent = Ember.Component.extend({
+  classNames: ['group']
+});
+
 App.Group = DS.Model.extend({
   longName: DS.attr('string'),
   color: DS.attr('string')

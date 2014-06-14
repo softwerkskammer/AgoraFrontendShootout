@@ -8,7 +8,8 @@ App.Router.map(function() {
 App.IndexRoute = Ember.Route.extend({
   model: function() {
 	  return { events: this.store.find('events', 1),
-      activities: this.store.all('activity')
+      activities: this.store.find('activity')
+      // activities: this.store.all('activity')
     };
   }
 });
@@ -26,10 +27,6 @@ App.Events = DS.Model.extend({
 });
 
 App.MyActivitiesComponent = Ember.Component.extend({
-
-});
-
-App.Activities = DS.Model.extend({
 
 });
 

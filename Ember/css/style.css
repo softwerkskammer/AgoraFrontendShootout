@@ -2,3 +2,10 @@
 .ember-application {
     margin: 20px;
 }
+
+.activities {
+    border-color: #000000;
+    border-width: 1px;
+    border-style: solid;
+
+}

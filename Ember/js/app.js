@@ -27,7 +27,7 @@ App.Events = DS.Model.extend({
 });
 
 App.MyActivitiesComponent = Ember.Component.extend({
-
+  classNames: ['activities']
 });
 
 App.Activity = DS.Model.extend({

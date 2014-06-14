@@ -14,19 +14,23 @@
 </script>
 
 <script type="text/x-handlebars" id="index">
-    Welcome {{memberId}}
+    Welcome {{events.memberId}}
 
-    <ul>
-        {{#each activity in activities}}
-        <li>{{activity.title}}</li>
-        {{/each}}
-    </ul>
 
-{{my-activities}}
+{{my-activities activities=activities}}
 </script>
 
 <script type="text/x-handlebars" id="components/my-activities">
-    <h2>My Activites</h2>
+    <h2>My Activities</h2>
+
+    Activities X: {{activities.length}}
+
+    <ul>
+        {{#each activities}}
+        <li>{{title}}</li>
+        {{/each}}
+    </ul>
+
 </script>
 
 <script src="js/libs/jquery-1.10.2.js"></script>

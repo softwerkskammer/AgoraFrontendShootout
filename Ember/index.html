@@ -17,7 +17,12 @@
     Welcome {{events.memberId}}
 
 
-{{my-activities activities=activities }}
+    {{my-activities activities=activities }}
+
+    {{#each group in groups}}
+    {{my-group group=group}}
+    {{/each}}
+
 </script>
 
 <script type="text/x-handlebars" id="components/my-activities">
@@ -28,6 +33,12 @@
         <li>{{title}}</li>
         {{/each}}
     </ul>
+
+</script>
+
+<script type="text/x-handlebars" id="components/my-group">
+
+    <h2>My Group {{group.longName}}</h2>
 
 </script>
 

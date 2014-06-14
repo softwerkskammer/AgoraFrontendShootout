@@ -1,26 +1,19 @@
 App = Ember.Application.create();
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
-App.Router.map(function() {
+App.Router.map(function () {
 
 });
 
 App.IndexRoute = Ember.Route.extend({
-  model: function() {
-	  return { events: this.store.find('events', 1),
-      activities: this.store.find('activity')
-      // activities: this.store.all('activity')
+  model: function () {
+    return { events: this.store.find('events', 1),
+      activities: this.store.find('activity'),
+      groups: this.store.find('group')
+
     };
   }
 });
-
-//App.EventsController = Ember.ObjectController.extend({
-//  name: "Hello",
-//
-//  actions: {
-//
-//  }
-//});
 
 App.Events = DS.Model.extend({
   memberId: DS.attr("string")
@@ -30,9 +23,72 @@ App.MyActivitiesComponent = Ember.Component.extend({
   classNames: ['activities']
 });
 
+App.Group = DS.Model.extend({
+  longName: DS.attr('string'),
+  color: DS.attr('string')
+});
+
 App.Activity = DS.Model.extend({
   title: DS.attr('string')
 });
+
+App.Group.FIXTURES = [
+  {
+    "id": "agora",
+    "longName": "Agora",
+    "color": "#a89696"
+  },
+  {
+    "id": "alle",
+    "longName": "Alle Mitglieder",
+    "color": "#cc0000"
+  },
+  {
+    "id": "commercial",
+    "longName": "Commercial Events",
+    "color": "#787a0a"
+  },
+  {
+    "id": "craftsmanswap",
+    "longName": "Craftsman Swaps",
+    "color": "#1b8f8f"
+  },
+  {
+    "id": "karlsruhe",
+    "longName": "Karlsruhe",
+    "color": "#42b0ed"
+  },
+  {
+    "id": "karlsruhe-orga",
+    "longName": "Karlsruhe Orga",
+    "color": "#fac255"
+  },
+  {
+    "id": "remotepairing",
+    "longName": "Remote Pair Programming",
+    "color": "#e384d4"
+  },
+  {
+    "id": "rheinmain",
+    "longName": "Rhein-Main",
+    "color": "#a400b3"
+  },
+  {
+    "id": "socrates2014",
+    "longName": "SoCraTes 2014",
+    "color": "#cb6868"
+  },
+  {
+    "id": "socrates-orga",
+    "longName": "SoCraTes Orga",
+    "color": "#991d33"
+  },
+  {
+    "id": "stuttgart",
+    "longName": "Stuttgart",
+    "color": "#00c2ff"
+  }
+];
 
 App.Activity.FIXTURES = [
   {
@@ -75,55 +131,55 @@ App.Activity.FIXTURES = [
 
 App.Events.FIXTURES = [
   { "id": 1,
- "postsByGroup": {
-    "agora": [],
-    "alle": [],
-    "commercial": [],
-    "craftsmanswap": [],
-    "karlsruhe": [
-      {
-        "dialogUrl": "/wiki/modal/karlsruhe/blog_2014-04-10_continuous_delivery",
-        "pureName": "Continuous Delivery (CD)\r",
-        "date": "10.04.2014",
-        "url": "/wiki/karlsruhe/blog_2014-04-10_continuous_delivery",
-        "dialogId": "karlsruhe-blog_2014-04-10_continuous_delivery"
-      },
-      {
-        "dialogUrl": "/wiki/modal/karlsruhe/blog_2014-03-19_refactoring",
-        "pureName": "Refactoring Workshop mit Rusi\r",
-        "date": "19.03.2014",
-        "url": "/wiki/karlsruhe/blog_2014-03-19_refactoring",
-        "dialogId": "karlsruhe-blog_2014-03-19_refactoring"
-      },
-      {
-        "dialogUrl": "/wiki/modal/karlsruhe/blog_2014-02-12_objectcalisthenics",
-        "pureName": "Validating the Object Calisthenics\r",
-        "date": "12.02.2014",
-        "url": "/wiki/karlsruhe/blog_2014-02-12_objectcalisthenics",
-        "dialogId": "karlsruhe-blog_2014-02-12_objectcalisthenics"
-      },
-      {
-        "dialogUrl": "/wiki/modal/karlsruhe/blog_2014-01-08flowdesign",
-        "pureName": "Flow Design mit Robin\r",
-        "date": "08.01.2014",
-        "url": "/wiki/karlsruhe/blog_2014-01-08flowdesign",
-        "dialogId": "karlsruhe-blog_2014-01-08flowdesign"
-      },
-      {
-        "dialogUrl": "/wiki/modal/karlsruhe/blog_2013-12-11_letztestreffen",
-        "pureName": "Letztes Jahrestreffen\r",
-        "date": "11.12.2013",
-        "url": "/wiki/karlsruhe/blog_2013-12-11_letztestreffen",
-        "dialogId": "karlsruhe-blog_2013-12-11_letztestreffen"
-      }
-    ],
-    "karlsruhe-orga": [],
-    "remotepairing": [],
-    "rheinmain": [],
-    "socrates2014": [],
-    "socrates-orga": [],
-    "stuttgart": []
-  }, "changesByGroup": {
+    "postsByGroup": {
+      "agora": [],
+      "alle": [],
+      "commercial": [],
+      "craftsmanswap": [],
+      "karlsruhe": [
+        {
+          "dialogUrl": "/wiki/modal/karlsruhe/blog_2014-04-10_continuous_delivery",
+          "pureName": "Continuous Delivery (CD)\r",
+          "date": "10.04.2014",
+          "url": "/wiki/karlsruhe/blog_2014-04-10_continuous_delivery",
+          "dialogId": "karlsruhe-blog_2014-04-10_continuous_delivery"
+        },
+        {
+          "dialogUrl": "/wiki/modal/karlsruhe/blog_2014-03-19_refactoring",
+          "pureName": "Refactoring Workshop mit Rusi\r",
+          "date": "19.03.2014",
+          "url": "/wiki/karlsruhe/blog_2014-03-19_refactoring",
+          "dialogId": "karlsruhe-blog_2014-03-19_refactoring"
+        },
+        {
+          "dialogUrl": "/wiki/modal/karlsruhe/blog_2014-02-12_objectcalisthenics",
+          "pureName": "Validating the Object Calisthenics\r",
+          "date": "12.02.2014",
+          "url": "/wiki/karlsruhe/blog_2014-02-12_objectcalisthenics",
+          "dialogId": "karlsruhe-blog_2014-02-12_objectcalisthenics"
+        },
+        {
+          "dialogUrl": "/wiki/modal/karlsruhe/blog_2014-01-08flowdesign",
+          "pureName": "Flow Design mit Robin\r",
+          "date": "08.01.2014",
+          "url": "/wiki/karlsruhe/blog_2014-01-08flowdesign",
+          "dialogId": "karlsruhe-blog_2014-01-08flowdesign"
+        },
+        {
+          "dialogUrl": "/wiki/modal/karlsruhe/blog_2013-12-11_letztestreffen",
+          "pureName": "Letztes Jahrestreffen\r",
+          "date": "11.12.2013",
+          "url": "/wiki/karlsruhe/blog_2013-12-11_letztestreffen",
+          "dialogId": "karlsruhe-blog_2013-12-11_letztestreffen"
+        }
+      ],
+      "karlsruhe-orga": [],
+      "remotepairing": [],
+      "rheinmain": [],
+      "socrates2014": [],
+      "socrates-orga": [],
+      "stuttgart": []
+    }, "changesByGroup": {
     "agora": [
       {
         "dialogUrl": "/wiki/modal/agora/index",
@@ -587,68 +643,6 @@ App.Events.FIXTURES = [
         "sortedResponses": []
       }
     ]
-  }, "groupsPerColumn": [
-    [
-      {
-        "id": "agora",
-        "longName": "Agora",
-        "color": "#a89696"
-      },
-      {
-        "id": "alle",
-        "longName": "Alle Mitglieder",
-        "color": "#cc0000"
-      },
-      {
-        "id": "commercial",
-        "longName": "Commercial Events",
-        "color": "#787a0a"
-      },
-      {
-        "id": "craftsmanswap",
-        "longName": "Craftsman Swaps",
-        "color": "#1b8f8f"
-      },
-      {
-        "id": "karlsruhe",
-        "longName": "Karlsruhe",
-        "color": "#42b0ed"
-      }
-    ],
-    [
-      {
-        "id": "karlsruhe-orga",
-        "longName": "Karlsruhe Orga",
-        "color": "#fac255"
-      },
-      {
-        "id": "remotepairing",
-        "longName": "Remote Pair Programming",
-        "color": "#e384d4"
-      },
-      {
-        "id": "rheinmain",
-        "longName": "Rhein-Main",
-        "color": "#a400b3"
-      },
-      {
-        "id": "socrates2014",
-        "longName": "SoCraTes 2014",
-        "color": "#cb6868"
-      },
-      {
-        "id": "socrates-orga",
-        "longName": "SoCraTes Orga",
-        "color": "#991d33"
-      }
-    ],
-    [
-      {
-        "id": "stuttgart",
-        "longName": "Stuttgart",
-        "color": "#00c2ff"
-      }
-    ]
-  ], "memberId": "user002"}
+  }, "memberId": "user002"}
 
 ];

@@ -1,0 +1,18 @@
+.displayDiv {
+  width: 50%;
+  border: none;
+  float: left;
+}
+.displayDivSmall {
+  width: 25%;
+  border: none;
+  float: left;
+}
+.container {
+  width: 100%;
+  border: none;
+  float: left;
+}
+.clear {
+  clear: both;
+}

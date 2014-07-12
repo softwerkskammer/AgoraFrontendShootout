@@ -1,0 +1,9 @@
+<h4>Latest Blog</h4>
+<div ng-show="blog.length">
+  <!-- Repeat each of the div elements for news item --->
+  <blog-item blog="blogItem" ng-repeat="blogItem in (blog)" />
+</div>
+<div ng-hide="blog.length">
+  No blog posts yet!
+</div>
+<div class="clear" />

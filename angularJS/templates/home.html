@@ -1,0 +1,36 @@
+<div class="displayDiv">
+  <h2>Upcoming Events</h2>
+  <div class="" ng-repeat="event in (events.all)">
+    <div class="displayDivSmall">
+      {{ event.eventName }}
+    </div>
+    <div class="displayDivSmall">
+      {{ event.date }}
+    </div>
+
+    <div class="clear" />
+  </div>
+
+</div>
+
+<div class="displayDiv">
+  <h2>Dashboard</h2>
+</div>
+
+<div class="container">
+  <!-- Repeat the element below for each of the groups we have -->
+  <div class="displayDiv groupDiv" ng-repeat="group in (groups.all)" ng-controller="GroupController">
+    <h2>{{ group.name }}</h2>
+    <blog-panel blog="groupdata.blogs" />
+    <wiki-panel wiki="groupdata.wiki" />
+
+    <div ng-show="groupdata.email.length">
+      <h4>Mail Archive</h4>
+      <!-- Repeat each of the div elements for Mail item --->
+      <div class="Item" ng-repeat="email in (groupdata.email)">
+        <div class="ItemTitle ">{{ email.title }}</div>
+        <div class="ItemDate ">{{ email.date| date:'yyyy MMM dd @ hh:mm' }}</div>
+      </div>
+    </div>
+  </div>
+</div>

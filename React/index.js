@@ -2,9 +2,19 @@
 
 var EventItem = React.createClass({
     render: function () {
+        var event = this.props.event;
         return (<li className="list-group-item">
-        {this.props.event.date} - {this.props.event.eventName}
+            {this._renderDate(event.date)}
+            {this._renderEventName(event.eventName)}
         </li>)
+    },
+    _renderDate: function (eventDate) {
+        date = moment(eventDate);
+        return (<span>{date.format("DD.MM.YYYY")}</span>);
+    },
+
+    _renderEventName: function (eventName) {
+        return (<a className="eventName">{eventName}</a>)
     }
 });
 

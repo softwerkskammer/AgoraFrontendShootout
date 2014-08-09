@@ -2,7 +2,9 @@
 
 var EventItem = React.createClass({
     render: function () {
-        return (<li>{this.props.event.date} - {this.props.event.eventName}</li>)
+        return (<li className="list-group-item">
+        {this.props.event.date} - {this.props.event.eventName}
+        </li>)
     }
 });
 
@@ -16,9 +18,9 @@ var EventBox = React.createClass({
 
     render: function () {
         return (
-            <div>
-                <h1>My Activities</h1>
-                <ul>
+            <div className="panel panel-default">
+                <div className="panel-heading">My Activities</div>
+                <ul className="list-group">
                     {this._renderItems(this.props.events)}
                 </ul>
             </div>
@@ -31,7 +33,6 @@ var eventsView = React.renderComponent(
     document.getElementById('events')
 );
 
-//    $.ajax('', function(data) {
 var events = [
     {
         "eventName": "Event Name One",
@@ -48,5 +49,4 @@ var events = [
 ];
 
 eventsView.setProps({events: events});
-//    })
 

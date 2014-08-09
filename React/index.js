@@ -18,7 +18,7 @@ var EventBox = React.createClass({
 
     render: function () {
         return (
-            <div className="panel panel-default">
+            <div className="eventBox panel panel-default">
                 <div className="panel-heading">My Activities</div>
                 <ul className="list-group">
                     {this._renderItems(this.props.events)}

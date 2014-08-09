@@ -43,20 +43,9 @@ var eventsView = React.renderComponent(
     document.getElementById('events')
 );
 
-var events = [
-    {
-        "eventName": "Event Name One",
-        "date": "1984-06-03T20:25:23"
-    },
-    {
-        "eventName": "Event Name Two",
-        "date": "1996-12-23T02:40:47"
-    },
-    {
-        "eventName": "Event Name Three",
-        "date": "1995-07-25T21:33:16"
-    }
-];
+$.ajax({
+    url: "../JSON/events.json" }).done(function (events) {
+        eventsView.setProps({events: events.all});
+    });
 
-eventsView.setProps({events: events});
 

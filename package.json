@@ -16,6 +16,7 @@
     "url": "https://github.com/softwerkskammer/AgoraFrontendShootout/issues"
   },
   "dependencies": {
-    "react": "~0.11.1"
+    "react": "~0.11.1",
+    "moment": "~2.8.1"
   }
 }

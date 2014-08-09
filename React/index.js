@@ -2,7 +2,19 @@
 
 var EventItem = React.createClass({
     render: function () {
-        return (<li>{this.props.event.date} - {this.props.event.eventName}</li>)
+        var event = this.props.event;
+        return (<li className="list-group-item">
+            {this._renderDate(event.date)}
+            {this._renderEventName(event.eventName)}
+        </li>)
+    },
+    _renderDate: function (eventDate) {
+        date = moment(eventDate);
+        return (<span>{date.format("DD.MM.YYYY")}</span>);
+    },
+
+    _renderEventName: function (eventName) {
+        return (<a className="eventName">{eventName}</a>)
     }
 });
 
@@ -16,9 +28,9 @@ var EventBox = React.createClass({
 
     render: function () {
         return (
-            <div>
-                <h1>My Activities</h1>
-                <ul>
+            <div className="eventBox panel panel-default">
+                <div className="panel-heading">My Activities</div>
+                <ul className="list-group">
                     {this._renderItems(this.props.events)}
                 </ul>
             </div>
@@ -31,22 +43,9 @@ var eventsView = React.renderComponent(
     document.getElementById('events')
 );
 
-//    $.ajax('', function(data) {
-var events = [
-    {
-        "eventName": "Event Name One",
-        "date": "1984-06-03T20:25:23"
-    },
-    {
-        "eventName": "Event Name Two",
-        "date": "1996-12-23T02:40:47"
-    },
-    {
-        "eventName": "Event Name Three",
-        "date": "1995-07-25T21:33:16"
-    }
-];
+$.ajax({
+    url: "../JSON/events.json" }).done(function (events) {
+        eventsView.setProps({events: events.all});
+    });
 
-eventsView.setProps({events: events});
-//    })
 

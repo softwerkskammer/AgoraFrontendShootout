@@ -5,7 +5,7 @@ This is the reactjs version of the Agora dashboard.
 In order to get this running do the following:
 - `cd React` 
 - `npm install` to install all dependencies, incl. react, mocha, etc.
-- `npm start` starts the dev server that logs out a url like `localhost:1234` where you find the dev version
+- `npm start` starts the dev server that logs out a url like `http://localhost:8080/` where you find the dev version
 
 # Run tests
 `npm test`

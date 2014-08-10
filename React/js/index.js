@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 var moment = require('moment');
+var jQuery = require('jQuery');
 
 var EventItem = React.createClass({
     render: function () {
@@ -44,7 +45,7 @@ var eventsView = React.renderComponent(
     EventBox({events: []}),
     document.getElementById('events')
 );
-$.ajax({url:'../JSON/events.json'}).done(function(data) {
+jQuery.ajax({url:'../JSON/events.json'}).done(function(data) {
   eventsView.setProps({events: data.all});
 });
 

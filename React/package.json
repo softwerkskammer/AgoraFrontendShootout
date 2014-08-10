@@ -22,6 +22,7 @@
     "requirejs": "^2.1.14"
   },
   "devDependencies": {
+    "jquery": "^2.1.1",
     "jsx-loader": "^0.11.0",
     "mocha": "~1.21.4",
     "must": "~0.12.0",

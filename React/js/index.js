@@ -42,10 +42,21 @@ var eventsView = React.renderComponent(
     EventBox({events: []}),
     document.getElementById('events')
 );
+$.ajax({url:'../JSON/events.json'}).done(function(data) {
+  eventsView.setProps({events: data.all});
+});
 
-$.ajax({
-    url: "../JSON/events.json" }).done(function (events) {
-        eventsView.setProps({events: events.all});
-    });
+function EventBoxController() {}
+EventBoxController.prototype = {
+  render: function() {
+    this._view = React.renderComponent(
+      EventBox({events: []}),
+      document.getElementById('events')
+    );
+  },
+  renderNewData: function() {
+    this._view.setProps();
+  }
+};
 
-
+module.exports = EventBoxController;

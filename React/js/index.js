@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
 var React = require('react');
 var moment = require('moment');
-var util = require('./util');
+var EventController = require('./EventBoxController');
+
 
 var EventItem = React.createClass({
     render: function () {
@@ -41,31 +42,9 @@ var EventBox = React.createClass({
     }
 });
 
-var eventsView = React.renderComponent(
-    EventBox({events: []}),
+var view = React.renderComponent(
+    new EventBox({events: []}),
     document.getElementById('events')
 );
-
-var onDashboardEventsReceived = function (error, data) {
-    eventsView.setProps({events: data});
-};
-
-util.getAllDashboardEvents(onDashboardEventsReceived);
-
-
-function EventBoxController() {
-}
-
-EventBoxController.prototype = {
-    render: function () {
-        this._view = React.renderComponent(
-            EventBox({events: []}),
-            document.getElementById('events')
-        );
-    },
-    renderNewData: function () {
-        this._view.setProps();
-    }
-};
-
-module.exports = EventBoxController;
+var controller = new EventController(view);
+controller.render();

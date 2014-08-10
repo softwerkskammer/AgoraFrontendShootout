@@ -1,5 +1,13 @@
 var expect = require('must');
+var chai = require('chai');
 var sinon = require('sinon').sandbox.create();
+var sinonChai = require("sinon-chai");
+var chai_expect = chai.expect;
+chai.use(sinonChai);
+
+
+var EventBoxController = require('../js/EventBoxController');
+var util = require('../js/util');
 
 
 describe('EventBox', function() {
@@ -8,20 +16,18 @@ describe('EventBox', function() {
     sinon.restore(); // reset all mocks
   });
 
-  it('should be so false', function() {
-    expect(true).to.be.true();
-  });
-
   describe('get data via ajax', function() {
     it('should pass the data to EventBox', function() {
-      var ajaxData = {all: []};
-      sinon.stub(Agora.util, 'ajax', function(callback) {
-        callback(null, ajaxData);
+      var events = [];
+      sinon.stub(util, 'getAllDashboardEvents', function(callback) {
+        callback(null, events);
       });
 
-      var spy = sinon.spy(EventBoxController.prototype, 'renderNewData');
+      var controller = new EventBoxController('dummyView');
+      var spy = sinon.stub(controller, 'renderNewData');
+      controller.render();
 
-      expect(spy.calledWith(ajaxData)).to.be.true();
+      chai_expect(spy).to.have.been.calledWith(null, events);
     });
   });
 

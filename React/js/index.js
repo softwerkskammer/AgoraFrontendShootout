@@ -1,50 +1,12 @@
 /** @jsx React.DOM */
 var React = require('react');
 var moment = require('moment');
-var EventController = require('./EventBoxController');
-
-
-var EventItem = React.createClass({
-    render: function () {
-        var event = this.props.event;
-        return (<li className="list-group-item">
-            {this._renderDate(event.date)}
-            {this._renderEventName(event.eventName)}
-        </li>)
-    },
-    _renderDate: function (eventDate) {
-        var date = moment.unix(eventDate);
-        return (<span>{date.format("LL")}</span>);
-    },
-
-    _renderEventName: function (eventName) {
-        return (<a className="eventName">{eventName}</a>)
-    }
-});
-
-var EventBox = React.createClass({
-
-    _renderItems: function (items) {
-        return items.map(function (item) {
-            return (<EventItem event={item} />)
-        });
-    },
-
-    render: function () {
-        return (
-            <div className="eventBox panel panel-default">
-                <div className="panel-heading">My Activities</div>
-                <ul className="list-group">
-                    {this._renderItems(this.props.events)}
-                </ul>
-            </div>
-            );
-    }
-});
+var EventBoxController = require('./EventBoxController');
+var EventBox = require('./EventBox');
 
 var view = React.renderComponent(
-    new EventBox({events: []}),
+    EventBox({events: []}),
     document.getElementById('events')
 );
-var controller = new EventController(view);
+var controller = new EventBoxController(view);
 controller.render();

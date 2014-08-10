@@ -9,7 +9,7 @@ var EventItem = React.createClass({
         </li>)
     },
     _renderDate: function (eventDate) {
-        date = moment.unix(eventDate);
+        var date = moment.unix(eventDate);
         return (<span>{date.format("LL")}</span>);
     },
 

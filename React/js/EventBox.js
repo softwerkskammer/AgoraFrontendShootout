@@ -1,4 +1,6 @@
+/** @jsx React.DOM */
 var React = require('react');
+var EventItem = require('jsx!./EventItem');
 
 var EventBox = React.createClass({
 

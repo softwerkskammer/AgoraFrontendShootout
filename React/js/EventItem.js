@@ -1,4 +1,6 @@
+/** @jsx React.DOM */
 var React = require('react');
+var moment = require('moment');
 
 var EventItem = React.createClass({
     render: function () {

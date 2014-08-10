@@ -1,8 +1,6 @@
-/** @jsx React.DOM */
 var React = require('react');
-var moment = require('moment');
 var EventBoxController = require('./EventBoxController');
-var EventBox = require('./EventBox');
+var EventBox = require('jsx!./EventBox');
 
 var view = React.renderComponent(
     EventBox({events: []}),

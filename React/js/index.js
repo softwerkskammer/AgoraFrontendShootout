@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 var moment = require('moment');
-var jQuery = require('jQuery');
+var util = require('./util');
 
 var EventItem = React.createClass({
     render: function () {
@@ -45,21 +45,27 @@ var eventsView = React.renderComponent(
     EventBox({events: []}),
     document.getElementById('events')
 );
-jQuery.ajax({url:'../JSON/events.json'}).done(function(data) {
-  eventsView.setProps({events: data.all});
-});
 
-function EventBoxController() {}
+var onDashboardEventsReceived = function (error, data) {
+    eventsView.setProps({events: data});
+};
+
+util.getAllDashboardEvents(onDashboardEventsReceived);
+
+
+function EventBoxController() {
+}
+
 EventBoxController.prototype = {
-  render: function() {
-    this._view = React.renderComponent(
-      EventBox({events: []}),
-      document.getElementById('events')
-    );
-  },
-  renderNewData: function() {
-    this._view.setProps();
-  }
+    render: function () {
+        this._view = React.renderComponent(
+            EventBox({events: []}),
+            document.getElementById('events')
+        );
+    },
+    renderNewData: function () {
+        this._view.setProps();
+    }
 };
 
 module.exports = EventBoxController;

@@ -1,1 +1,22 @@
-{"all":[{"eventName":"SoCraTes 2014","date":1407423600},{"eventName":"36. Treffen der Softwerkskammer Karlsruhe","date":1407951000},{"eventName":"Treffen #33 der Softwerkskammer Rhein-Main","date":1409072400},{"eventName":"37. Treffen der Softwerkskammer Karlsruhe","date":1410370200},{"eventName":"38. Treffen der Softwerkskammer Karlsruhe","date":1412789400}]}
+{"all": [
+    {
+        "eventName": "SoCraTes 2014",
+        "date": 1407423600
+    },
+    {
+        "eventName": "36. Treffen der Softwerkskammer Karlsruhe",
+        "date": 1407951000
+    },
+    {
+        "eventName": "Treffen #33 der Softwerkskammer Rhein-Main",
+        "date": 1409072400
+    },
+    {
+        "eventName": "37. Treffen der Softwerkskammer Karlsruhe",
+        "date": 1410370200
+    },
+    {
+        "eventName": "38. Treffen der Softwerkskammer Karlsruhe",
+        "date": 1412789400
+    }
+]}
